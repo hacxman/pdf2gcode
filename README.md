@@ -37,3 +37,6 @@ That will automatically use scale_gcode and level your .ngc according to
 obtained levelling data. Produces your_pdf.pdf.ngc.levelled.ngc.
 
 Enjoy and please fill issues.
+
+## Author
+hexo from base48 hackerspace (https://base48.cz)
