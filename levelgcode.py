@@ -14,22 +14,22 @@ if __name__ == '__main__':
         for line in fin.readlines():
             print line
             x,y,z = map(float, line.split()[:3])
+            fout.write(' '.join(map(str,[x,y,z]))+'\n')
 #            fout.write('{} {} {}, '.format(x,y,z))
-            lineresults.append((x,y,z))
-            px += 1
-            if px >= W:
-                px = 0
-                py += 1
-                if py % 2 == 0:
-                    lineresults.reverse()
-                fout.write(', '.join(map(lambda (_x,_y,_z): '{} {} {}'.format(_x, _y, _z), lineresults))+'\n')
-                lineresults = []
-            if py >= H:
-                break
+            #lineresults.append((x,y,z))
+            #px += 1
+            #if px >= W:
+            #    px = 0
+            #    py += 1
+            #    if py % 2 == 0:
+            #        lineresults.reverse()
+            #    fout.write(', '.join(map(lambda (_x,_y,_z): '{} {} {}'.format(_x, _y, _z), lineresults))+'\n')
+            #    lineresults = []
+            #if py >= H:
+            #    break
 
 with open(fname) as fin:
     linecount = len(fin.readlines())
-r = os.system('./scale_gcode.py {} "1-{}" --zlevel probe-results.ssv 0.05 | tee {}.levelled.ngc'.
-        format(fname, linecount, fname))
+r=os.system('./scale_gcode.py {} "1-{}" --zlevel probe-results.ssv 0.05 | tee {}.levelled.ngc'.  format(fname, linecount, fname))
 if r != 0:
     print 'levelling failed {}'.format(r)
